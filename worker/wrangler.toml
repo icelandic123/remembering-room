@@ -1,0 +1,13 @@
+name = "remembering-room"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+workers_dev = true
+
+[ai]
+binding = "AI"
+
+[vars]
+ALLOWED_ORIGINS = "https://icelandic123.github.io,http://localhost:3000,http://localhost:8787"
+
+[observability]
+enabled = true

@@ -1,0 +1,7 @@
+/devpost/learner-profile.md
+.env
+.env.*
+!.env.example
+.dev.vars
+node_modules/
+.wrangler/

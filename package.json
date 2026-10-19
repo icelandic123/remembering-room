@@ -1,0 +1,13 @@
+{
+  "name": "remembering-room",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test worker/test/*.test.js",
+    "dev:worker": "cd worker && wrangler dev",
+    "dev:web": "serve web -l 3000"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

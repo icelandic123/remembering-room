@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Remembering Room</title>
+  <meta name="description" content="Plan a calm 30-minute reminiscence session for someone you love, from the songs, films and shows of their own younger years.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%239c4a3c'/%3E%3Cpath d='M9 22V11h6.5a4 4 0 0 1 0 8H12m3.5 0L20 22' stroke='%23f6f1e7' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+</head>
+<body>
+  <main class="page">
+    <header class="masthead">
+      <p class="eyebrow">Remembering Room</p>
+      <h1>Half an hour of the songs, films and shows from their younger years.</h1>
+      <p class="lede">Tell us a little about someone you visit. We'll put together a calm session from the years they remember best, with gentle ways to start a conversation.</p>
+    </header>
+
+    <form id="profile" class="panel" novalidate>
+      <div class="row">
+        <label class="field">
+          <span>What do you call them?</span>
+          <input name="name" autocomplete="off" placeholder="Mum, Grandad, Joan…" maxlength="40">
+        </label>
+        <label class="field short">
+          <span>Year they were born</span>
+          <input name="birthYear" inputmode="numeric" placeholder="1948" maxlength="4" required>
+        </label>
+      </div>
+      <label class="field">
+        <span>Where they grew up</span>
+        <input name="place" autocomplete="off" placeholder="Liverpool, England" maxlength="80">
+      </label>
+      <label class="field">
+        <span>A few things they've always loved</span>
+        <textarea name="loves" rows="3" placeholder="Elvis, The Sound of Music, dancing, Coronation Street" maxlength="400" required></textarea>
+        <small>Singers, bands, films, TV shows, books. Anything you know.</small>
+      </label>
+      <label class="field">
+        <span>Anything to steer clear of <em>(optional)</em></span>
+        <input name="avoid" autocomplete="off" placeholder="War films, a song that makes them sad…" maxlength="300">
+      </label>
+      <p class="error" id="form-error" role="alert" hidden></p>
+      <div class="actions">
+        <button type="submit" id="make">Make a session</button>
+        <button type="button" class="link" id="example">Try an example</button>
+      </div>
+      <p class="privacy">Nothing you type is saved. It is used once to make the session, then forgotten.</p>
+    </form>
+
+    <section id="progress" class="progress" aria-live="polite" hidden>
+      <ol></ol>
+    </section>
+
+    <section id="card" class="card" hidden aria-live="polite"></section>
+
+    <section id="feedback" class="panel feedback" hidden>
+      <h2>How did it go?</h2>
+      <p>After your visit, tell us in a sentence or two. We'll swap what didn't land for something closer to what did.</p>
+      <label class="field">
+        <span class="sr-only">How did it go?</span>
+        <textarea name="feedback" rows="3" placeholder="She didn't know the Beatles one. She loved anything she could dance to." maxlength="500"></textarea>
+      </label>
+      <p class="error" id="feedback-error" role="alert" hidden></p>
+      <div class="actions">
+        <button type="button" id="update">Update the session</button>
+        <button type="button" class="link" id="print">Print the session</button>
+      </div>
+    </section>
+
+    <details id="howmade" class="howmade" hidden>
+      <summary>How this session was made</summary>
+      <ol></ol>
+      <p class="credit">Recommendations come from <a href="https://www.qloo.com/">Qloo</a>'s taste data. A language model reads your description and writes the conversation starters. Every item is checked against the person's memory years.</p>
+    </details>
+
+    <footer class="foot">
+      <p>Remembering Room is a conversation aid, not a medical or care service. Go gently, and follow their lead.</p>
+    </footer>
+  </main>
+  <script src="config.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
