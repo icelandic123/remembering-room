@@ -1,0 +1,42 @@
+name: Record demo video
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: Page to record
+        default: https://icelandic123.github.io/remembering-room/
+
+permissions:
+  contents: write
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Playwright
+        run: npm i --no-save playwright@1.56.1 && npx playwright install --with-deps chromium ffmpeg
+      - name: Record
+        run: node scripts/record-demo.mjs "${{ inputs.url }}" demo-video
+      - name: Convert to MP4
+        run: |
+          f=$(ls demo-video/*.webm | head -1)
+          ffmpeg -y -i "$f" -c:v libx264 -preset slow -crf 20 -pix_fmt yuv420p -movflags +faststart remembering-room-demo.mp4
+          ffprobe -v error -show_entries format=duration -of csv=p=0 remembering-room-demo.mp4
+      - uses: actions/upload-artifact@v4
+        with:
+          name: demo-video
+          path: remembering-room-demo.mp4
+      - name: Publish the video on the demo-video branch (for upload to YouTube)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan demo-video
+          git rm -rfq .
+          git add -f remembering-room-demo.mp4
+          git commit -qm "Demo video"
+          git push -f origin demo-video
