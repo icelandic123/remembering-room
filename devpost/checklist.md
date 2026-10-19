@@ -19,7 +19,7 @@ Build mode: fast (the builder is an agent working for bladoi; checkpoints are ru
   Learner check: Open the page, press "Try an example", then **Make a session**, and see five moments from 1958 to 1978 with reasons.
   Commit: `Make a session card from tastes and memory years`
 
-- [ ] **2. "How did it go?" swaps moments**
+- [x] **2. "How did it go?" swaps moments**
   Becomes usable: Typing "she didn't know the Beatles one, she loved the dancing" replaces that moment with a dance song, marked new, with an updated reason.
   Why now: It is the second half of the core loop and the agentic part, and it reuses the tools from slice 1.
   PRD ref: `prd.md > Updating after a visit`
@@ -61,3 +61,4 @@ Reflection: not started
 Activity mode: not started
 
 ## Revisions
+- Slices 1 and 2 landed in one commit — the refine agent reused the same Qloo tools and tests, so building it alongside slice 1 cost little.
